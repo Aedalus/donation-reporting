@@ -1,0 +1,151 @@
+<campaign-finance-transactions xmlns="http://www.state.or.us/sos/ebs2/ce/dataobject"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sos.state.or.us/elections/pages/cand/campaign_finance/cf.xsd" filer-id="5276">
+    <contact id="1003">
+        <type>C</type>
+        <contact-name>
+            <committee>
+                <id>113</id>
+            </committee>
+        </contact-name>
+        <address>
+            <street1>7035 SW Hampton St</street1>
+            <city>Tigard </city>
+            <state>OR</state>
+            <zip>97223</zip>
+            <county>Multnomah</county>
+        </address>
+    </contact>
+    <contact id="1004">
+        <type>I</type>
+        <contact-name>
+            <individual-name>
+                <first>Gregg</first>
+                <last>Hamann</last>
+                <title>President</title>
+            </individual-name>
+        </contact-name>
+        <address>
+            <street1>1816 SE 3rd</street1>
+            <city>Astoria</city>
+            <state>OR</state>
+            <zip>97103</zip>
+            <county>Clatsop</county>
+        </address>
+        <occupation>President</occupation>
+        <employment>
+            <employer-name>Clatsop Community College</employer-name>
+            <city>Astoria</city>
+            <state>OR</state>
+        </employment>
+    </contact>
+    <contact id="1005">
+        <type>P</type>
+        <contact-name>
+            <committee>
+                <id>353</id>
+            </committee>
+        </contact-name>
+        <address>
+            <street1>Margaret Branson c/o Tabor Co</street1>
+            <street2>PO Box 4485</street2>
+            <city>Portland</city>
+            <state>OR</state>
+            <zip>97208</zip>
+            <zip-plus4>4485</zip-plus4>
+            <county>Multnomah</county>
+        </address>
+        <phone>
+            <work>503-224-8200</work>
+        </phone>
+    </contact>
+    <contact id="1006">
+        <type>B</type>
+        <contact-name>
+            <business-name>Quality Reality, LLC</business-name>
+        </contact-name>
+        <address>
+            <street1>123 Suave Way</street1>
+            <street2>PO Box 123</street2>
+            <city>Salem</city>
+            <state>OR</state>
+            <zip>97317</zip>
+            <county>Marion</county>
+        </address>
+        <phone>
+            <work>503-370-1000</work>
+            <work-extension>102</work-extension>
+            <fax>503-370-1001</fax>
+        </phone>
+        <email>qualityhomes@msn.com</email>
+    </contact>
+    <transaction id="3">
+        <operation>
+            <add>true</add>
+        </operation>
+        <contact-id>1003</contact-id>
+        <type>C</type>
+        <sub-type>CA</sub-type>
+        <description>Contribution from a Committee</description>
+        <amount>250</amount>
+        <date>2013-11-28</date>
+        <check-no>2345</check-no>
+    </transaction>
+    <transaction id="4">
+        <operation>
+            <add>true</add>
+        </operation>
+        <contact-id>1004</contact-id>
+        <type>C</type>
+        <sub-type>NLR</sub-type>
+        <amount>700</amount>
+        <date>2014-10-17</date>
+        <interest-rate>2%</interest-rate>
+        <payment-schedule>60 months</payment-schedule>
+    </transaction>
+    <transaction id="5">
+        <operation>
+            <add>true</add>
+        </operation>
+        <contact-id>1005</contact-id>
+        <type>C</type>
+        <sub-type>IK</sub-type>
+        <tran-purpose>M</tran-purpose>
+        <amount>144</amount>
+        <date>2014-03-30</date>
+    </transaction>
+    <transaction id="6">
+        <operation>
+            <add>true</add>
+        </operation>
+        <contact-id>1006</contact-id>
+        <type>E</type>
+        <sub-type>CE</sub-type>
+        <tran-purpose>G</tran-purpose>
+        <description>Office Rent</description>
+        <amount>1200</amount>
+        <payment-method>CHK</payment-method>
+        <date>2014-10-03</date>
+        <check-no>1006</check-no>
+    </transaction>
+    <transaction id="7">
+        <operation>
+            <add>true</add>
+        </operation>
+        <contact-id>1001</contact-id>
+        <type>E</type>
+        <sub-type>CE</sub-type>
+        <tran-purpose>F</tran-purpose>
+        <amount>5000</amount>
+        <payment-method>CHK</payment-method>
+        <date>2014-10-12</date>
+        <check-no>3456</check-no>
+        <associated-tran>
+            <id>1</id>
+            <complete>Y</complete>
+        </associated-tran>
+        <associated-tran>
+            <id>2</id>
+            <complete>Y</complete>
+        </associated-tran>
+    </transaction>
+</campaign-finance-transactions>
