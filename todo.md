@@ -1,0 +1,6 @@
+- Donating company? All individuals? Other samples?
+- Avoid any info outside of address? Provide email?
+- Country Code?
+- Contact ID - Use Donor Id column?
+- Transaction ID - Use Stripe Charge Id? Paypal Transaction ID?
+- Tran purpose? Fundraising Event Expense?

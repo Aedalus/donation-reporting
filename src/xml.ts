@@ -1,49 +1,6 @@
 import xml2js from "xml2js";
 
-class Contact {
-  $ = { id: "" };
-  type = "";
-  contactName: {
-    committee?: {
-      id: string;
-    };
-    individualName?: {
-      first: string;
-      last: string;
-      title: string;
-    };
-    businessName?: string;
-  } = {};
-  address?: {
-    street1?: string;
-    street2?: string;
-    city?: string;
-    state?: string;
-    zip?: string;
-    zipPlus4?: string;
-    county?: string;
-  };
-  occupation?: string;
-  employment?: {
-    employerName?: string;
-    city?: string;
-    state?: string;
-  };
-}
-
-class Transaction {
-  $ = { id: "" };
-  operation = { add: true };
-  contactId?: string;
-  type?: string;
-  subType?: string;
-  description?: string;
-  amount?: string;
-  date?: string;
-  checkNo?: string;
-}
-
-class CampaignFinanceTransaction {
+export class CampaignFinanceTransaction {
   $ = {
     xmlns: "http://www.state.or.us/sos/ebs2/ce/dataobject",
     "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
@@ -56,26 +13,24 @@ class CampaignFinanceTransaction {
     this.$["filer-id"] = filerId;
   }
 
-  contact = new Array<Contact>();
-  transaction = new Array<Transaction>();
+  contact = new Array<object>();
+  transaction = new Array<object>();
 
-  addContact(contact: Contact) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  addContact(contact: any = {}): any {
     this.contact.push(contact);
+    return contact;
   }
 
-  addTransaction(transaction: Transaction) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  addTransaction(transaction: any = {}): any {
     this.transaction.push(transaction);
+    return transaction;
   }
-}
 
-export function getXML() {
-  const t = new CampaignFinanceTransaction("5276");
-
-  //   t.addContact();
-
-  const builder = new xml2js.Builder({
-    rootName: "campaign-finance-transactions",
-  });
-  const xml = builder.buildObject(t);
-  return xml;
+  toXML() {
+    return new xml2js.Builder({
+      rootName: "campaign-finance-transactions",
+    }).buildObject(this);
+  }
 }
