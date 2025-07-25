@@ -31,6 +31,7 @@ export class CampaignFinanceTransaction {
   toXML() {
     return new xml2js.Builder({
       rootName: "campaign-finance-transactions",
+      headless: true,
     }).buildObject(this);
   }
 }

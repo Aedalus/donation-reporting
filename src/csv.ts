@@ -18,6 +18,7 @@ export type DonationRecord = {
   "Platform Fee": number;
   "Total Fee": number;
   "Net Amount": number;
+  "Existing Donor Id": string | null;
   "Fee Covered": "yes" | "no";
   "Donor Comment": string | null;
   "Internal Notes": string | null;
