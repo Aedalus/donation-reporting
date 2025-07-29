@@ -32,6 +32,7 @@ export type DonationRecord = {
   Country: string;
   Employer: string;
   Occupation: string;
+  Occupation_1: string;
   Designation: string | null;
   "Receipt Id": number;
   "Donation Type": "stripe" | "paypal" | string;
@@ -49,6 +50,11 @@ export type DonationRecord = {
   "Donor Id": number;
   Status: "paid" | "pending" | "failed" | string;
   "Employer City & State (or Country)": string;
+
+  "Employment Status"?: string;
+  "Employer's Name"?: string;
+  "Employer's City"?: string;
+  "Employer's State"?: string;
 };
 
 export function parseCSV(csv: string): DonationRecord[] {

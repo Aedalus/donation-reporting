@@ -3,6 +3,8 @@ import { Form, type SubmitData } from "./Form";
 import { useState } from "react";
 import { transform } from "./transform";
 
+const version = "0.14";
+
 const requiredCSVFields = [
   "Donor's First Name",
   "Donor's Last Name",
@@ -17,6 +19,10 @@ const requiredCSVFields = [
   "Amount",
   "Platform Fee",
   "Processing Fee",
+  "Employment Status (Employee/Not Employed/Self-Employed)",
+  "Employer's Name",
+  "Employer's City",
+  "Employer's State",
 ];
 function App() {
   const [data, setData] = useState<SubmitData>();
@@ -36,7 +42,9 @@ function App() {
   return (
     <div style={{ display: "flex", flexDirection: "column", padding: "0 10%" }}>
       <div style={{ marginBottom: "20px" }}>
-        <h1 style={{ marginTop: "30px" }}>Donorbox &rarr; ORESTAR Reporting</h1>
+        <h1 style={{ marginTop: "30px" }}>
+          Donorbox &rarr; ORESTAR Reporting - {version}
+        </h1>
         <p style={{ maxWidth: "800px", marginBottom: "" }}>
           This software is provided under the{" "}
           <a href="https://opensource.org/license/mit">MIT License</a>. Accuracy
@@ -64,24 +72,9 @@ function App() {
             </li>
           ))}
         </ul>
-        An optional
-        <li
-          style={{
-            width: "10em",
-            display: "inline",
-            backgroundColor: "lightgray",
-            padding: "3px 10px",
-            margin: "5px",
-            borderRadius: "5px",
-          }}
-        >
-          Existing Donor Id
-        </li>
-        field is supported, which will be used in place of Donor Id if supplied.
       </div>
-
+      Contacts will only be added if the "First Donation" field is set.
       <Form OnSubmit={(data) => setData(data)} />
-
       {xml && (
         <>
           <button

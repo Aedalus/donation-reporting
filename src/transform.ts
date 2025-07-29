@@ -16,7 +16,7 @@ const cSet = (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   c: any,
   path: string,
-  value: string | number | boolean | null
+  value: string | number | boolean | null | undefined
 ) => {
   if (value) {
     set(c, path, value);
@@ -38,7 +38,7 @@ export function transform({
     const contactId = row["Existing Donor Id"] || row["Donor Id"];
     const eventDate = new Date(row["Donated At"]).toISOString().slice(0, 10);
 
-    if (!transactionsOnly) {
+    if (!transactionsOnly && row["First Donation"]) {
       const c = t.addContact({ $: { id: contactId } });
 
       cSet(c, "type", "I");
@@ -56,6 +56,21 @@ export function transform({
         } else {
           cSet(c, "address.country-code", "UNKNOWN_COUNTRY_CODE");
         }
+      }
+
+      // Occupations
+      const occupation = row.Occupation || row.Occupation_1;
+      const employmentStatus = row["Employment Status"];
+      if (employmentStatus === "Not Employed") {
+        cSet(c, "employment.not-employed", "Yes");
+      } else if (employmentStatus === "Self-Employed") {
+        cSet(c, "occupation", occupation);
+        cSet(c, "employment.self-employed", "Yes");
+      } else if (employmentStatus == "Employee") {
+        cSet(c, "occupation", occupation);
+        cSet(c, "employment.employer-name", row["Employer's Name"]);
+        cSet(c, "employment.city", row["Employer's City"]);
+        cSet(c, "employment.state", row["Employer's State"]);
       }
     }
 
@@ -79,9 +94,9 @@ export function transform({
       cSet(plt, "type", "E");
       cSet(plt, "sub-type", "CE");
       cSet(plt, "tran-purpose", "G");
-      cSet(plt, "payment-method", "EFT");
       cSet(plt, "description", "Platform processing fee");
       cSet(plt, "amount", row["Platform Fee"]);
+      cSet(plt, "payment-method", "EFT");
       cSet(plt, "date", eventDate);
     }
 
@@ -98,9 +113,9 @@ export function transform({
       cSet(pf, "type", "E");
       cSet(pf, "sub-type", "CE");
       cSet(pf, "tran-purpose", "G");
-      cSet(pf, "payment-method", "EFT");
       cSet(pf, "description", "Processing fee");
       cSet(pf, "amount", row["Processing Fee"]);
+      cSet(pf, "payment-method", "EFT");
       cSet(pf, "date", eventDate);
     }
   }
